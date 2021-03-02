@@ -15,6 +15,24 @@ class EventsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
+    }
+
+    private func searchResults(searchText: String)
+    {
+        if eventsController.events.count > 0 {
+            eventsController.events.removeAll()
+        }
+
+        eventsController.performSearch(search: searchText) { error in
+            if let error = error {
+                print("Error with search: \(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -83,4 +101,10 @@ class EventsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension EventsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchResults(searchText: searchText)
+    }
 }

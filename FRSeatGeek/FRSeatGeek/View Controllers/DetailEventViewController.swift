@@ -24,24 +24,25 @@ class DetailEventViewController: UIViewController {
     }
 
     @IBAction func favoriteDidTap(sender: UIBarButtonItem) {
+        guard let eventController = eventController,
+              let event = event else { return }
+        let id = String(event.id)
         if favorite {
             favoriteButtonItem.image = UIImage(systemName: "heart")
+            eventController.deleteFavoriteEventByID(id: id)
         } else {
             favoriteButtonItem.image = UIImage(systemName: "heart.fill")
-            if let eventController = eventController,
-               let event = event {
-                let id = String(event.id)
-                eventController.favoriteEvent(favorite: favorite, id: id)
-            }
-
+            eventController.favoriteEvent(favorite: favorite, id: id)
         }
         favorite.toggle()
     }
     
 
     private func updateViews() {
-        guard let event = event else { return }
+        guard let eventController = eventController,
+              let event = event else { return }
 
+        favorite = eventController.updateWithFavorites(id: String(event.id))
         // Setting the navigation title text
         let label = UILabel()
         label.backgroundColor = .clear
@@ -56,5 +57,11 @@ class DetailEventViewController: UIViewController {
         dateLabel.text = event.datetimeLocal
         locationLabel.text = "\(event.venue.city), \(event.venue.state)"
         eventImage.download(from: event.performers[0].image)
+
+        if favorite {
+            favoriteButtonItem.image = UIImage(systemName: "heart.fill")
+        } else {
+            favoriteButtonItem.image = UIImage(systemName: "heart")
+        }
     }
 }

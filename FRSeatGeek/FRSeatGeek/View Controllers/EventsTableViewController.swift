@@ -39,6 +39,7 @@ class EventsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,14 +73,18 @@ class EventsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        //return fetchedResultController.sections?[0].numberOfObjects ?? 0
         return eventsController.events.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventTableViewCell else { return UITableViewCell() }
 
-        cell.eventRepresentation = eventsController.events[indexPath.row]
-
+        let eventRepresentation = eventsController.events[indexPath.row]
+        cell.titleText.text = eventRepresentation.title
+        cell.dateLabel.text = eventRepresentation.datetimeLocal
+        cell.isFavorite = eventsController.updateWithFavorites(id: String(eventRepresentation.id))
+        
         return cell
     }
 
@@ -141,7 +146,12 @@ extension EventsTableViewController: UISearchBarDelegate {
 }
 
 extension EventsTableViewController: NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
 }

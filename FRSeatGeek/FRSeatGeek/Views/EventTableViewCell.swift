@@ -9,20 +9,28 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var titleText: UILabel!
-    @IBOutlet private weak var date: UILabel!
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var favoriteImage: UIImageView!
 
-    var eventRepresentation: EventRepresentation? {
+    var isFavorite: Bool? {
         didSet {
             updateViews()
         }
     }
 
+
     private func updateViews() {
-        guard let event = eventRepresentation else { return }
 
-        titleText.text = event.title
-        date.text = event.datetimeLocal
+        guard let isFavorite = isFavorite else {
+            favoriteImage.image = nil
+            return
+        }
+
+        if isFavorite {
+            favoriteImage.image = UIImage(systemName: "heart.fill")?.withTintColor(.red)
+        } else {
+            favoriteImage.image = nil
+        }
     }
-
 }

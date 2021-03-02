@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class EventsController {
 
@@ -13,7 +14,6 @@ class EventsController {
     private let clientID = "MjE1Njc2NTV8MTYxNDcwNTg3OC4wNjIwMDg0"
 
     var events = [EventRepresentation]()
-    //var searchResults = [EventRepresentation]()
 
     init() {
         fetchEvents()
@@ -98,15 +98,61 @@ class EventsController {
         }.resume()
     }
 
+    func updateWithFavorites(id: String) -> Bool {
+        var isFavorite = false
+        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+
+        let context = CoreDataStack.shared.container.newBackgroundContext()
+        context.performAndWait {
+            do {
+                let existingEvents = try context.fetch(fetchRequest)
+                for event in existingEvents {
+                    if let eventID = event.id {
+                        if id == eventID {
+                            isFavorite = true
+                        }
+                    }
+                }
+            } catch {
+                print("Error fetching entries for IDs: \(error)")
+            }
+        }
+        return isFavorite
+    }
+
     func favoriteEvent(favorite: Bool, id: String) {
         let event = Event(context: CoreDataStack.shared.mainContext)
         event.id = id
         event.favorite = favorite
         do {
             try CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
-            print("Saved item to core data")
         } catch {
             print("Error saving object \(error)")
+        }
+    }
+
+    func deleteFavoriteEventByID(id: String) {
+
+        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+
+        let context = CoreDataStack.shared.container.newBackgroundContext()
+        context.performAndWait {
+            do {
+                let existingEvents = try context.fetch(fetchRequest)
+                for event in existingEvents {
+                    if let eventID = event.id {
+                        if id == eventID {
+                            context.delete(event)
+                            try CoreDataStack.shared.save(context: context)
+                        }
+                    }
+                }
+            } catch {
+                context.reset()
+                print("Error deleting event with ID: \(error)")
+            }
         }
     }
 }

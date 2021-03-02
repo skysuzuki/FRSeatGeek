@@ -46,16 +46,27 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YVa-lj-aWx">
+                                            <rect key="frame" x="384" y="11.5" width="20" height="17.5"/>
+                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="RSz-Oc-XUM"/>
+                                                <constraint firstAttribute="height" constant="20" id="fD5-SC-iMf"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="dAn-LH-KPp" firstAttribute="top" secondItem="vmn-gU-kqo" secondAttribute="topMargin" constant="10" id="1lf-VZ-mzm"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="dAn-LH-KPp" secondAttribute="bottom" constant="10" id="5Nn-Ue-6eD"/>
+                                        <constraint firstAttribute="trailing" secondItem="YVa-lj-aWx" secondAttribute="trailing" constant="10" id="OZL-X0-opx"/>
+                                        <constraint firstItem="YVa-lj-aWx" firstAttribute="top" secondItem="vmn-gU-kqo" secondAttribute="top" constant="10" id="PaX-iN-BeX"/>
                                         <constraint firstItem="dAn-LH-KPp" firstAttribute="leading" secondItem="vmn-gU-kqo" secondAttribute="leadingMargin" constant="10" id="xVO-3W-h5G"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="dAn-LH-KPp" secondAttribute="trailing" constant="10" id="xWV-kC-uBH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="date" destination="qr8-dn-J8A" id="8nr-SJ-CBm"/>
+                                    <outlet property="dateLabel" destination="qr8-dn-J8A" id="dz1-4u-EX1"/>
+                                    <outlet property="favoriteImage" destination="YVa-lj-aWx" id="K3A-ll-0Hn"/>
                                     <outlet property="titleText" destination="yat-Q0-L5T" id="Sxu-Xb-pm3"/>
                                     <segue destination="FSz-7O-nXs" kind="show" identifier="ShowDetailEventSegue" id="c8m-b9-yI8"/>
                                 </connections>
@@ -120,6 +131,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7hq-Nf-Dxg">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="ik7-KA-mQQ">
+                            <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>
                                 <action selector="favoriteDidTapWithSender:" destination="FSz-7O-nXs" id="Xyd-io-v1n"/>
                             </connections>
@@ -160,8 +172,12 @@
     </scenes>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

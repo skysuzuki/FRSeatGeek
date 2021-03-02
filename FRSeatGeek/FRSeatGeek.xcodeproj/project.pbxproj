@@ -23,6 +23,7 @@
 		BB8B37D125EEB6C10005CAB8 /* Performer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8B37D025EEB6C10005CAB8 /* Performer.swift */; };
 		BB8B37E625EED9E60005CAB8 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8B37E525EED9E60005CAB8 /* Venue.swift */; };
 		BB8B37EB25EEDB690005CAB8 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8B37EA25EEDB680005CAB8 /* UIImageView+Extension.swift */; };
+		BB8B37F125EEDDE00005CAB8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8B37F025EEDDE00005CAB8 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BB8B37D025EEB6C10005CAB8 /* Performer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Performer.swift; sourceTree = "<group>"; };
 		BB8B37E525EED9E60005CAB8 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		BB8B37EA25EEDB680005CAB8 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		BB8B37F025EEDDE00005CAB8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				BB8B377925EEAEE10005CAB8 /* AppDelegate.swift */,
 				BB8B377B25EEAEE10005CAB8 /* SceneDelegate.swift */,
 				BB8B377F25EEAEE10005CAB8 /* Main.storyboard */,
+				BB8B37F025EEDDE00005CAB8 /* CoreDataStack.swift */,
 				BB8B37EF25EEDC7F0005CAB8 /* Extensions */,
 				BB8B37D925EEC3630005CAB8 /* Models */,
 				BB8B37D825EEC3530005CAB8 /* Model Controllers */,
@@ -325,6 +328,7 @@
 				BB8B37BD25EEB39E0005CAB8 /* EventTableViewCell.swift in Sources */,
 				BB8B37E625EED9E60005CAB8 /* Venue.swift in Sources */,
 				BB8B37CC25EEB57D0005CAB8 /* EventRepresentation.swift in Sources */,
+				BB8B37F125EEDDE00005CAB8 /* CoreDataStack.swift in Sources */,
 				BB8B378425EEAEE10005CAB8 /* FRSeatGeek.xcdatamodeld in Sources */,
 				BB8B37B825EEB3890005CAB8 /* DetailEventViewController.swift in Sources */,
 				BB8B377A25EEAEE10005CAB8 /* AppDelegate.swift in Sources */,

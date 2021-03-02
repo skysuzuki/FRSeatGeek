@@ -97,6 +97,16 @@ class EventsController {
             }
         }.resume()
     }
-    
 
+    func favoriteEvent(favorite: Bool, id: String) {
+        let event = Event(context: CoreDataStack.shared.mainContext)
+        event.id = id
+        event.favorite = favorite
+        do {
+            try CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
+            print("Saved item to core data")
+        } catch {
+            print("Error saving object \(error)")
+        }
+    }
 }

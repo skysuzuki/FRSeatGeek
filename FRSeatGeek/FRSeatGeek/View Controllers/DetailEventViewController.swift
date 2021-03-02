@@ -15,6 +15,7 @@ class DetailEventViewController: UIViewController {
     @IBOutlet weak var favoriteButtonItem: UIBarButtonItem!
 
     var event: EventRepresentation?
+    var eventController: EventsController?
     var favorite: Bool = false
 
     override func viewDidLoad() {
@@ -27,6 +28,12 @@ class DetailEventViewController: UIViewController {
             favoriteButtonItem.image = UIImage(systemName: "heart")
         } else {
             favoriteButtonItem.image = UIImage(systemName: "heart.fill")
+            if let eventController = eventController,
+               let event = event {
+                let id = String(event.id)
+                eventController.favoriteEvent(favorite: favorite, id: id)
+            }
+
         }
         favorite.toggle()
     }

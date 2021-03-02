@@ -127,8 +127,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="NJI-gn-09p" id="O75-t8-2hB"/>
+                        <outlet property="eventImage" destination="b4M-wy-b4g" id="m2A-n2-7ZP"/>
                         <outlet property="favoriteButtonItem" destination="ik7-KA-mQQ" id="o7n-uL-tHW"/>
-                        <outlet property="imageView" destination="b4M-wy-b4g" id="zJD-Ef-Ze0"/>
                         <outlet property="locationLabel" destination="Szk-73-Lvb" id="Ny9-2C-0CD"/>
                     </connections>
                 </viewController>

@@ -11,7 +11,8 @@ struct EventRepresentation: Decodable {
     var title: String
     var datetimeLocal: String
     // Add if time
-    //var performers: Performer
+    var performers: [Performer]
+    var venue: Venue
     var id: Int
 
 }

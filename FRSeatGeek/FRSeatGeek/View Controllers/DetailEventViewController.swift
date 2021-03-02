@@ -9,7 +9,7 @@ import UIKit
 
 class DetailEventViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var favoriteButtonItem: UIBarButtonItem!
@@ -47,6 +47,7 @@ class DetailEventViewController: UIViewController {
 
 
         dateLabel.text = event.datetimeLocal
-
+        locationLabel.text = "\(event.venue.city), \(event.venue.state)"
+        eventImage.download(from: event.performers[0].image)
     }
 }

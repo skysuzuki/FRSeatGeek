@@ -22,14 +22,41 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" id="npX-KV-2gu">
-                                <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" id="npX-KV-2gu" customClass="EventTableViewCell" customModule="FRSeatGeek" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="91.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="npX-KV-2gu" id="vmn-gU-kqo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dAn-LH-KPp">
+                                            <rect key="frame" x="30" y="21" width="354" height="49.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yat-Q0-L5T">
+                                                    <rect key="frame" x="0.0" y="0.0" width="33" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr8-dn-J8A">
+                                                    <rect key="frame" x="0.0" y="28.5" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dAn-LH-KPp" firstAttribute="top" secondItem="vmn-gU-kqo" secondAttribute="topMargin" constant="10" id="1lf-VZ-mzm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dAn-LH-KPp" secondAttribute="bottom" constant="10" id="5Nn-Ue-6eD"/>
+                                        <constraint firstItem="dAn-LH-KPp" firstAttribute="leading" secondItem="vmn-gU-kqo" secondAttribute="leadingMargin" constant="10" id="xVO-3W-h5G"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dAn-LH-KPp" secondAttribute="trailing" constant="10" id="xWV-kC-uBH"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="date" destination="qr8-dn-J8A" id="8nr-SJ-CBm"/>
+                                    <outlet property="titleText" destination="yat-Q0-L5T" id="Sxu-Xb-pm3"/>
                                     <segue destination="FSz-7O-nXs" kind="show" identifier="DetailEventSegue" id="c8m-b9-yI8"/>
                                 </connections>
                             </tableViewCell>

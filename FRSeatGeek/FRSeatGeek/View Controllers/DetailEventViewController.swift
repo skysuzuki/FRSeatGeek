@@ -46,7 +46,7 @@ class DetailEventViewController: UIViewController {
         // Setting the navigation title text
         let label = UILabel()
         label.backgroundColor = .clear
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.textAlignment = .center
         label.textColor = .black

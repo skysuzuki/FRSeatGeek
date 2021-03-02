@@ -18,6 +18,16 @@ class EventsTableViewController: UITableViewController {
         searchBar.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     private func searchResults(searchText: String)
     {
         if eventsController.events.count > 0 {
@@ -91,15 +101,17 @@ class EventsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetailEventSegue" {
+            if let detailVC = segue.destination as? DetailEventViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.event = self.eventsController.events[indexPath.row]
+            }
+        }
     }
-    */
+
 
 }
 

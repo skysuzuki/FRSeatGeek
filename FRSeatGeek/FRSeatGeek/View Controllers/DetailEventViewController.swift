@@ -9,21 +9,44 @@ import UIKit
 
 class DetailEventViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var favoriteButtonItem: UIBarButtonItem!
+
+    var event: EventRepresentation?
+    var favorite: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
+    }
 
-        // Do any additional setup after loading the view.
+    @IBAction func favoriteDidTap(sender: UIBarButtonItem) {
+        if favorite {
+            favoriteButtonItem.image = UIImage(systemName: "heart")
+        } else {
+            favoriteButtonItem.image = UIImage(systemName: "heart.fill")
+        }
+        favorite.toggle()
     }
     
 
-    /*
-    // MARK: - Navigation
+    private func updateViews() {
+        guard let event = event else { return }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Setting the navigation title text
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.textAlignment = .center
+        label.textColor = .black
+        label.text = event.title
+        self.navigationItem.titleView = label
+
+
+        dateLabel.text = event.datetimeLocal
+
     }
-    */
-
 }
